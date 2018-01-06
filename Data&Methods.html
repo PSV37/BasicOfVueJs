@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Data and Methods
+	</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="vue-app">
+		<div class="container text-center">
+			<h3 class="well">{{title}}</h3>
+			<p>This is comes from methods</p>
+			<h3>{{greet('night')}}</h3>
+			<p>{{name}}</p>
+		</div>	
+		
+	</div>
+
+
+
+<script type="text/javascript">
+	new Vue({
+	el : '#vue-app',
+	data : {
+		name : 'sapna',
+		title :'Methods in vuejs'
+	},
+	methods : {
+		greet : function(night){
+			return 'Good' +' ' + night+ ' ' + this.name
+		}
+	}
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJs Conditionals</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container" id="vue-app">
+		<div class="well">
+			<h2 class="text-center">{{title}}</h2>
+		</div>
+		<div>
+			<button class="btn btn-danger" v-on:click="error=!error">Display Error</button>
+			<button class="btn btn-success" v-on:click="success=!success">Display Success</button><br><br>
+
+			<p v-if="error"><b>OOP's,Error Occured......</b></p>
+			<p v-else-if="success"><b>Waw,Successfully run......</b></p>
+		</div>
+	</div>
+
+
+
+
+
+<script type="text/javascript">
+	new Vue({
+	el : '#vue-app',
+	data : {
+		title : 'VueJs Conditionals ',
+		error:false,
+		success : false,
+
+		
+	},
+	methods : {
+		
+	}
+})
+</script>
+</body>
+</html>

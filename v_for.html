@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>V-For Conditionals</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container" id="vue-app">
+		<div class="well">
+			<h2 class="text-center">{{title}}</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<h3>Using ul tag</h3>
+				<ul>
+				  <li v-for="(char , index) in charactors">{{index}} . {{char}}</li>
+			    </ul>
+			</div>
+			
+			<div class="col-md-3">
+				<h3>Using div</h3>
+				<div v-for="(chars , index) in charactors">
+					{{index}} . {{chars}}
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<h3>Using Template</h3>
+				<div class="col-md-6">
+					<template v-for="(data , index) in datas">
+					{{index}} . {{data.name}} - {{data.age}} <br>
+				</template>
+				</div>	
+				<div class="col-md-6">
+					<template v-for="data in datas">
+						<div v-for="(val,key) in data">
+							 {{key}} - {{val}} 
+						</div>
+				  </template>
+				</div>			
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+<script type="text/javascript">
+	new Vue({
+	el : '#vue-app',
+	data : {
+		title : 'V-For in VueJs ',
+		charactors : ['mango','banana','fruti','apple','cat','dog'],
+		datas : [
+         {name:'sapna',age:21},
+         {name:'seema',age:22},
+         {name:'balaji',age:23},
+         {name:'shilpa',age:20}
+		]
+	},
+	methods : {
+		
+	}
+})
+</script>
+</body>
+</html>

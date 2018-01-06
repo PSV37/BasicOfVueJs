@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div id="vue-app">
+	<div class="container">
+		<div class="well">
+			<h2 class="text-center">{{title}}</h2>
+		</div>
+		<div class="text-center">
+			<!-- Multiply data -->
+		 <div class="row">	
+			<div class="col-md-6" style=" height: 50px;">
+				<h3>{{rightside}}</h3>
+				 <div class="col-md-6">
+				 	First : <input type="text" v-model="value1" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-6"> 
+				 	Second : <input type="text" v-model="vlaue2" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-12">
+				 		<button  v-on:click="add" class="btn btn-primary">Multiply</button>
+				       Total : {{total}}	
+				 </div>
+			</div>	 
+			<div class="col-md-6">
+				<h3>{{leftside}}</h3>
+				 <div class="col-md-6">
+				 	First : <input type="text" v-model="dvalue1" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-6"> 
+				 	Second : <input type="text" v-model="dvalue2" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-12">
+				       Total : {{multipydynamically}}	
+				 </div>
+			</div>
+		</div>
+
+             <!-- Minus data -->
+			<div class="row" style="margin-top: 20px">
+			  <div class="col-md-6">
+			  	<h3>{{minus_right}}</h3>
+				 <div class="col-md-6">
+				 	First : <input type="text" v-model="mvalue1" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-6"> 
+				 	Second : <input type="text" v-model="mvalue2" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-12">
+				 	<button  v-on:click="minus" class="btn btn-primary">Minus</button>
+				       Total : {{minus_total}}	
+				 </div>
+			  </div>
+
+			  <div class="col-md-6">
+			  	 <h3>{{minus_left}}</h3>
+				 <div class="col-md-6">
+				 	First : <input type="text" v-model="mvalue3" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-6"> 
+				 	Second : <input type="text" v-model="mvalue4" class="form-control" placeholder="enter value"><br><br>
+				 </div>
+				 <div class="col-md-12">
+				       Total : {{minusdynamically}}	
+				 </div>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-top:50px">
+				<div class="col-md-6">
+				  <h2><b>Click Button</b></h2>
+				  <h3>Count : {{count}}</h3>
+				  <button class="btn btn-success" v-on:click="addbyone(1)">Add by 1</button>
+				  <button class="btn btn-danger"  v-on:click="minusby(1)">Minus by 1</button>
+			    </div>
+			    <div class="col-md-6">
+			    	 <h3>X,Y Co-ordinator</h3>
+			    	 <div id="canvas" class="text-center" v-on:mousemove="updataxy" style="height: 300px; border: 1px solid;">
+			    	 	{{x}} , {{y}}
+			    	 </div>
+			    </div>
+			</div>
+	   </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	new Vue({
+	el : '#vue-app',
+	data : {
+		title : 'Events In VueJs',
+		value1 : '4',
+		vlaue2 : '2',
+		dvalue1 : '4',
+		dvalue2 :'2',
+		mvalue1 : '2',
+		mvalue2 :'4',
+		mvalue3 : '2',
+		mvalue4 : '4',
+		minus_total : '',
+		total : '',
+		rightside : 'Multiply by click event',
+		leftside : 'Multiply by dynamically',
+		minus_right : 'Subtract by click event',
+		minus_left : 'Subtract by dynamically',
+		count : '0',	
+		x : '',
+		y : '',
+	},
+
+	methods : {
+		add:function(){
+         return this.total = this.value1 * this.vlaue2     
+		},
+
+		minus:function(){
+			return this.minus_total =  this.mvalue1 - this.mvalue2
+		},
+
+		addbyone:function(inc){
+			  this.count +=  inc
+		},
+		minusby:function(dec){
+			 this.count -= dec
+		},
+
+		updataxy:function(event){
+        // console.log(event);
+         this.x = event.offsetX;
+         this.y = event.offsetY;
+		}
+	},
+
+  	computed : {
+		multipydynamically:function(){
+			return  this.dvalue1 / this.dvalue2
+		},
+
+		minusdynamically:function(){
+			return this.mvalue3 - this.mvalue4
+		}
+	}
+})
+</script>
+</body>
+</html>

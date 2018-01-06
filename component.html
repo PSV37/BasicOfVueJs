@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Data-binding
+	</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+ <div class="container">
+ 	<div class="row">
+ 		<h2 class="text-center"><b>Mulptiple Instance of VueJs</b></h2>
+ 		<div class="col-md-6">
+ 		   <div id="vue-app-one">
+			 <div>
+				    <h3 class="well text-center">{{title}}</h3>
+				     <div class="text-center">
+				         <getting>{{name}}</getting><br><br>
+				         <button class="btn btn-success" v-on:click="changedTitletwo">Changed Title </button>
+				     </div>
+			 </div>
+	       </div>
+ 		</div>
+ 		<div class="col-md-6">
+ 			  <div id="vue-app-two">
+					 <div >
+					    <h3 class="well text-center">{{title}}</h3>
+					     <div class="text-center">
+					        <br><br>
+                          <button class="btn btn-success" v-on:click="changedTitleone">Changed Title </button>
+					     </div>
+					 </div>
+				</div>
+ 		</div>
+ 	</div>
+ </div>
+
+
+
+<script type="text/javascript">
+Vue.component('getting',{
+	template : 'My name is sapna',
+	data:function(){
+		return{
+			name : 'sapna'
+		}
+	}
+});
+
+
+var one = new Vue({
+			el : '#vue-app-one',
+			data : {
+				title : 'Vue One',
+				
+			},
+			computed : {
+				greet : function(){
+					return 'Return data from vue-one';
+				}
+			},
+
+			methods : {
+				changedTitletwo : function(){
+					two.title = 'Changed Tilte Two';
+				}
+			}
+		});
+
+var two = new Vue({
+	el : '#vue-app-two',
+	data : {
+		title : 'Vue-Two',
+	},
+	computed : {
+		greet : function(){
+			return 'Return data from vue-two';
+		}
+	},
+	methods : {
+		changedTitleone:function(){
+			return one.title = 'Changed Title One';
+		}
+	}
+})
+</script>
+</body>
+</html>
